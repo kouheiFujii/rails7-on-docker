@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: mysql
+      DB_USERNAME: root
+      DB_PASSWORD: password
+  mysql:
+    platform: linux/x86_64
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: rails7_on_docker
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # Official MySQL Character Codes
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./config/charset.cnf:/etc/mysql/conf.d/charset.cnf
+
+volumes:
+  mysql-data:
