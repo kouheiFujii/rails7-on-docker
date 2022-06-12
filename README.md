@@ -16,3 +16,8 @@ $ docker-compose up web
 ```bash
 $ docker-compose run --rm web bundle exec rspec
 ```
+
+# Lint
+```bash
+$ docker-compose run --rm web bundle exec rubocop
+```
