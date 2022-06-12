@@ -12,6 +12,8 @@ services:
       DB_HOST: mysql
       DB_USERNAME: root
       DB_PASSWORD: password
+    depends_on:
+      - mysql
   mysql:
     platform: linux/x86_64
     image: mysql

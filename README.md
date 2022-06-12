@@ -3,21 +3,19 @@ This application is demonstration Rails 7 with mysql, all runninng Docker.
 
 # Setup
 ```bash
-$ docker-compose build
+$ make build
 
-$ docker-compose up -d mysql
+$ make db.create
 
-$ docker-compose run --rm web rails db:create
-
-$ docker-compose up web
+$ make start
 ```
 
 # Test
 ```bash
-$ docker-compose run --rm web bundle exec rspec
+$ make test
 ```
 
 # Lint
 ```bash
-$ docker-compose run --rm web bundle exec rubocop
+$ make lint
 ```
